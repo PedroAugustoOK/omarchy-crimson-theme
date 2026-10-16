@@ -40,13 +40,15 @@ hyprland_inactive_border = "rgba(4a1e2aaa)"
 ## Wallpapers
 
 Three original 2560×1440 wallpapers, generated for this theme, in
-`backgrounds/` (cycle with `Super + Ctrl + Space`):
+`backgrounds/` (cycle with `Super + Ctrl + Space`), plus the brand
+`omarchy.png` (pixel wordmark in crimson, as in official themes):
 
-| File | Description |
+| Wallpaper | Description |
 |---|---|
-| `001-crimson-minimal.png` | Near-black, thin crimson horizon line, ring + dot motif |
-| `002-crimson-night.jpg` | Nocturnal gradient, crimson moon with glow, ridge line, stars |
-| `003-crimson-abstract.jpg` | Diagonal wine bands, soft glows, bezier lines |
+| ![Crimson Minimal](backgrounds/001-crimson-minimal.png) `001-crimson-minimal.png` | Near-black, thin crimson horizon line, ring + dot motif |
+| ![Crimson Night](backgrounds/002-crimson-night.jpg) `002-crimson-night.jpg` | Nocturnal gradient, crimson moon with glow, ridge line, stars |
+| ![Crimson Abstract](backgrounds/003-crimson-abstract.jpg) `003-crimson-abstract.jpg` | Diagonal wine bands, soft glows, bezier lines |
+| ![Omarchy brand](backgrounds/omarchy.png) `omarchy.png` | Official pixel wordmark tinted crimson on near-black (3840×2160) |
 
 All files are under ~150 KB. No third-party images, no redistribution issues.
 
@@ -102,7 +104,7 @@ To restore your previous theme: `omarchy theme set "<name>"`
 ```text
 omarchy-crimson-theme/
 ├── colors.toml          # the palette — the only required file
-├── backgrounds/         # 3 original wallpapers
+├── backgrounds/         # 3 original wallpapers + brand omarchy.png
 ├── icons.theme          # Yaru-red
 ├── keyboard.rgb         # e63950
 ├── preview.png          # 1800×1012 theme-picker thumbnail
