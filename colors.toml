@@ -1,0 +1,39 @@
+# Crimson — a dark-red Omarchy theme.
+# Near-black wine-tinted surfaces, crimson accent, warm readable text.
+# All 26 canonical keys are explicit (no reliance on derived floors).
+
+mode = "dark"
+
+accent = "#E63950"
+selection = "#4A1E2A"
+muted = "#8A757D"
+
+background = "#0B0A0C"
+dark_background = "#080708"
+darker_background = "#050404"
+lighter_background = "#21171C"
+
+foreground = "#F2E8EB"
+dark_foreground = "#B7A2A9"
+light_foreground = "#FBEFF3"
+bright_foreground = "#FFF5F7"
+
+red = "#E63950"
+yellow = "#D9A45B"
+orange = "#D97352"
+green = "#8FC38A"
+cyan = "#6EC2C4"
+blue = "#7AA5D6"
+magenta = "#C48AC9"
+brown = "#A67C64"
+
+bright_red = "#FF5C74"
+bright_yellow = "#EFC27E"
+bright_green = "#A8D9A3"
+bright_cyan = "#8EDDDD"
+bright_blue = "#9ABFE8"
+bright_magenta = "#D8A9DC"
+
+# Crimson gradient window borders, dark-wine inactive borders.
+hyprland_active_border = "rgba(E63950ee) rgba(761C30ee) 45deg"
+hyprland_inactive_border = "rgba(4a1e2aaa)"
