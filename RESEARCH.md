@@ -1,8 +1,8 @@
 # Crimson — Omarchy Theme Research
 
-**Date:** 2026-10-16
-**Omarchy version tested:** 4.0.4-1 (`pacman -Qi omarchy`), `version` file reports `4.0.0.alpha`
-**Machine:** Arch Linux, current theme at research time: `Ankh Dark`
+**Date:** 2026-10-17 (latest audit)
+**Omarchy version tested:** 4.0.4-1 (2026-10-16), re-audited on **4.0.5-1** (2026-10-17); `version` file reports `4.0.0.alpha`
+**Machine:** Arch Linux, current theme at first research time: `Ankh Dark`
 
 This document records how the Omarchy theme system actually works on the
 installed version, verified against source files and local installation —
@@ -308,3 +308,60 @@ bright_* visibly brighter; light themes darken ANSI + avoid pure white.
   naming magic.
 - Package `4.0.4-1` vs `version` file `4.0.0.alpha`: behaviour above is
   from the installed scripts, which are authoritative for this machine.
+
+## 11. Post-update audit on Omarchy 4.0.5-1 (2026-10-17)
+
+Re-audit after the system update. All Crimson checks pass unchanged; the
+mechanism documented above is still current. Differences observed 4.0.4 → 4.0.5:
+
+- **New hard dependency `omarchy-themes-intros`** ("Background intro videos
+  for the Omarchy themes"): ships `backgrounds/intros/*.mp4` (192–752 KB
+  each) for the *official* themes only. Stock Omarchy has **no consumer** for
+  these files: nothing in `/usr/share/omarchy` (`bin/`, `shell/` QML,
+  `default/themed/`) references `intros` or plays theme-side mp4s. They are
+  assets for the optional wallpaper engine **OWE** (`omacom/owe`, `omarchy
+  pkg add owe`), which plays per-file intros via `owe intro` / a login handoff
+  and watches the `~/.local/state/omarchy/current/background` symlink + an
+  optional `omarchy hook install theme-set /usr/share/owe/10-owe-sync`. A
+  git-installed theme may ship a small intro (it would be staged into
+  `backgrounds/intros/` and inert without OWE — `choose_theme_background`
+  matches only images at depth 1, so mp4s never join the rotation).
+- **Theme switching gained crossfade**: `omarchy-theme-set` snapshots the
+  outgoing background and calls `shell_ipc background themeTransition …`
+  before rotating `~/.local/state/omarchy/current/background`. Also warm
+  selector caches (`omarchy-theme-switcher --preload`, `omarchy theme bg
+  cache` thumbnails).
+- **Staging pipeline same contract**: deny list for git themes unchanged
+  (`*.lua` + `alacritty.toml foot.ini ghostty.conf kitty.conf vscode.json`
+  + symlinks + optional `colors.toml` derived from `alacritty.toml`). Docs
+  (`*.md`, `LICENSE`) are staged but exempt from "ignored" reporting.
+  Theme slug is written to `~/.local/state/omarchy/current/theme.name`
+  (lowercase); `omarchy theme current` prettifies it ("Crimson").
+- **New theme set hooks** beyond the known ones: `omarchy-theme-set-tmux`,
+  `-gnome`, `-pi`, `-claude`, `-hermes`, `-t3code`, `-obsidian` — all
+  generated from `colors.toml` resolutions; a colors.toml theme contributes
+  nothing itself. New template placeholders in the built-in set resolved
+  fine: `{{ purple }}` (magenta alias), `{{ mode }}` / `{{ theme_type }}`,
+  `*_strip` variants, `background_rgb`, `{{ mix a b 6–52% }}`,
+  `{{ hypr_gradient hyprland_active_border accent }}`,
+  `{{ hyprland_inactive_border … }}`. `omarchy-theme-color --all` resolves
+  71 keys with zero unresolved placeholders; staged configs are
+  **byte-identical** to the 4.0.4 output.
+- **New CLI surface**: `omarchy theme refresh` (re-stage current theme from
+  templates, `OMARCHY_THEME_SKIP_BACKGROUND=1` — the post-update command),
+  `omarchy theme update` (git pull every theme cloned under
+  `~/.config/omarchy/themes`), `omarchy theme extras` (lists git-installed
+  themes), `omarchy theme bg cache`, `omarchy-plymouth-set-by-theme
+  <theme>` (sudo; applies `colors.toml background/foreground` +
+  `unlock.png` as the boot screen — not run automatically).
+- **`omarchy-plymouth-preview` "hang" explained**: the script ends with
+  `imv -f "$output_path"` — it opens the rendered PNG in a viewer and
+  blocks until the window closes. File is written before `imv`; no upstream
+  bug report needed. Run with a short timeout or close the viewer.
+- **e2e re-verification on 4.0.5**: `omarchy theme install
+  https://github.com/PedroAugustoOK/omarchy-crimson-theme` → EXIT 0, clone
+  under `~/.config/omarchy/themes/crimson`, no "Ignored in …" warnings;
+  `omarchy theme set crimson` (skip-background) → EXIT 0; staged tree
+  identical to snapshot; zero `{{ }}` leftovers in staged configs;
+  `omarchy theme list` shows "Crimson"; switcher preview resolves via
+  `preview.png`.

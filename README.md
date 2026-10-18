@@ -54,8 +54,9 @@ All files are under ~150 KB. No third-party images, no redistribution issues.
 
 ## Compatibility
 
-- Omarchy **4.x** (tested on `4.0.4-1`). Requires the `colors.toml` theme
-  system with `mode`, template expansion and `hypr_gradient` support.
+- Omarchy **4.x** (tested on `4.0.4-1` and `4.0.5-1`). Requires the
+  `colors.toml` theme system with `mode`, template expansion and
+  `hypr_gradient` support.
 - Everything is derived from `colors.toml` through Omarchy's built-in
   templates: Hyprland borders, shell (bar, menus, launcher, notifications,
   OSD, lock), Alacritty/Foot/Ghostty/Kitty, btop, Chromium, Neovim (aether),
@@ -79,7 +80,7 @@ This clones to `~/.config/omarchy/themes/crimson` and applies it immediately.
 ```bash
 omarchy theme list       # confirm `crimson` is listed
 omarchy theme set crimson
-omarchy theme current    # should print `crimson`
+omarchy theme current    # should print `Crimson`
 omarchy theme bg next    # cycle the three wallpapers
 ```
 
@@ -93,11 +94,32 @@ omarchy dev theme-preview crimson
 
 ```bash
 omarchy theme update          # pull latest for all git-installed themes
+omarchy theme refresh         # re-apply the current theme after an Omarchy upgrade
 omarchy theme remove crimson  # delete the local clone
 ```
 
+After `omarchy update` brings new Omarchy versions, run
+`omarchy theme refresh` once so your staged configs are generated with the
+current templates.
+
 To restore your previous theme: `omarchy theme set "<name>"`
 (see `omarchy theme list`).
+
+## Optional extras (machine-local, not part of the theme)
+
+- **Plymouth boot screen** — apply Crimson to the boot/login screen:
+
+  ```bash
+  omarchy-plymouth-set-by-theme crimson   # uses unlock.png + palette (asks for sudo)
+  omarchy plymouth preview '#0B0A0C' '#F2E8EB' ~/.config/omarchy/themes/crimson/unlock.png /tmp/crimson-boot.png
+  ```
+
+  The preview command leaves an `imv` window open showing the render — close
+  it to finish. Reset with `omarchy plymouth reset` or pick another theme's
+  boot screen under `Style > Unlock`.
+- **OWE wallpaper engine** (`omarchy pkg add owe`) can play animated
+  backgrounds/intros from themes. Crimson ships static wallpapers only;
+  see `RESEARCH.md §11` for the intro-vs-OWE status.
 
 ## Repository structure
 
