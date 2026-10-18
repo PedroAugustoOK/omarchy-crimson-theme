@@ -39,18 +39,17 @@ hyprland_inactive_border = "rgba(4a1e2aaa)"
 
 ## Wallpapers
 
-Three original 2560×1440 wallpapers, generated for this theme, in
-`backgrounds/` (cycle with `Super + Ctrl + Space`), plus the brand
-`omarchy.png` (pixel wordmark in crimson, as in official themes):
+Three ≥2560×1440 wallpapers shipped in `backgrounds/` (cycle with
+`Super + Ctrl + Space`):
 
 | Wallpaper | Description |
 |---|---|
-| ![Crimson Minimal](backgrounds/001-crimson-minimal.png) `001-crimson-minimal.png` | Near-black, thin crimson horizon line, ring + dot motif |
-| ![Crimson Night](backgrounds/002-crimson-night.jpg) `002-crimson-night.jpg` | Nocturnal gradient, crimson moon with glow, ridge line, stars |
-| ![Crimson Abstract](backgrounds/003-crimson-abstract.jpg) `003-crimson-abstract.jpg` | Diagonal wine bands, soft glows, bezier lines |
-| ![Omarchy brand](backgrounds/omarchy.png) `omarchy.png` | Official pixel wordmark tinted crimson on near-black (3840×2160) |
+| ![01 Crimson Racing](backgrounds/001-crimson-racing.jpg) `001-crimson-racing.jpg` | Linux-liveried sports car drifting in rain, red lights on a fogged valley |
+| ![02 Crimson Countryside](backgrounds/002-crimson-countryside.jpg) `002-crimson-countryside.jpg` | Painted red homestead in mist, Arch/Omarchy industrial towers behind |
+| ![03 Crimson Anime](backgrounds/003-crimson-anime.jpg) `003-crimson-anime.jpg` | Dark anime-style portrait, crimson haze and orange ember eyes |
 
-All files are under ~150 KB. No third-party images, no redistribution issues.
+Artwork chosen by the theme author (AI-generated pieces and one
+anime-style illustration). JPEG, all re-encoded, ~0.4–0.7 MB each.
 
 ## Compatibility
 
@@ -126,7 +125,7 @@ To restore your previous theme: `omarchy theme set "<name>"`
 ```text
 omarchy-crimson-theme/
 ├── colors.toml          # the palette — the only required file
-├── backgrounds/         # 3 original wallpapers + brand omarchy.png
+├── backgrounds/         # 3 wallpapers
 ├── icons.theme          # Yaru-red
 ├── keyboard.rgb         # e63950
 ├── preview.png          # 1800×1012 theme-picker thumbnail
