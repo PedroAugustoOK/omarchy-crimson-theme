@@ -4,6 +4,10 @@ A dark-red Omarchy theme. Near-black wine-tinted surfaces, a crimson accent
 used where it matters — focused borders, active bar elements, selections —
 and warm, highly legible text.
 
+Its light sibling, **Crimson Light** (warm paper, deep wine ink, the same
+crimson family), lives at
+[PedroAugustoOK/omarchy-crimson-light-theme](https://github.com/PedroAugustoOK/omarchy-crimson-light-theme).
+
 ![Crimson preview](preview.png)
 
 ## Palette
