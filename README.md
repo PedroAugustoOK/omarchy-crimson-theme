@@ -43,17 +43,19 @@ hyprland_inactive_border = "rgba(4a1e2aaa)"
 
 ## Wallpapers
 
-Three ≥2560×1440 wallpapers shipped in `backgrounds/` (cycle with
-`Super + Ctrl + Space`):
+Three 2560×1440 abstract wallpapers in `backgrounds/` (cycle with
+`Super + Ctrl + Space`). They follow the quiet, soft-focus language of
+[Veredas](https://github.com/PedroAugustoOK/omarchy-veredas-theme): no
+imagery, just slow washes of wine and near-black.
 
 | Wallpaper | Description |
 |---|---|
-| ![01 Crimson Racing](backgrounds/001-crimson-racing.jpg) `001-crimson-racing.jpg` | Linux-liveried sports car drifting in rain, red lights on a fogged valley |
-| ![02 Crimson Countryside](backgrounds/002-crimson-countryside.jpg) `002-crimson-countryside.jpg` | Painted red homestead in mist, Arch/Omarchy industrial towers behind |
-| ![03 Crimson Anime](backgrounds/003-crimson-anime.jpg) `003-crimson-anime.jpg` | Dark anime-style portrait, crimson haze and orange ember eyes |
+| ![01 Crimson Ember](backgrounds/001-crimson-ember.png) `001-crimson-ember.png` | A diagonal ember glow dissolving into near-black |
+| ![02 Crimson Velvet](backgrounds/002-crimson-velvet.png) `002-crimson-velvet.png` | A soft central bloom of deep wine, barely lit |
+| ![03 Crimson Dusk](backgrounds/003-crimson-dusk.png) `003-crimson-dusk.png` | Warm ember light low at the foot of the frame |
 
-Artwork chosen by the theme author (AI-generated pieces and one
-anime-style illustration). JPEG, all re-encoded, ~0.4–0.7 MB each.
+PNG, 145–180 KB each. Original abstract artwork generated
+programmatically with ImageMagick; no third-party imagery.
 
 ## Compatibility
 
@@ -129,7 +131,7 @@ To restore your previous theme: `omarchy theme set "<name>"`
 ```text
 omarchy-crimson-theme/
 ├── colors.toml          # the palette — the only required file
-├── backgrounds/         # 3 wallpapers
+├── backgrounds/         # 3 abstract wallpapers
 ├── icons.theme          # Yaru-red
 ├── keyboard.rgb         # e63950
 ├── preview.png          # 1800×1012 theme-picker thumbnail
