@@ -23,16 +23,20 @@ red family), lives at
 | Selection | Dark wine | `#4A1E2A` |
 | Primary text | Warm white | `#F2E8EB` |
 | Secondary text | Muted rose | `#B7A2A9` |
+| Raised text | Warm white | `#F5E9EC` |
+| Cursor / ANSI 15 | Brightest warm white | `#FBEFF3` |
 | Muted | Grey rose | `#8A757D` |
 
 Full ANSI set (all ≥ 4.5:1 vs background except brown, which is decorative):
 
 - `red #E63950`, `yellow #D9A45B`, `orange #D97352`, `green #8FC38A`
-- `cyan #6EC2C4`, `blue #7AA5D6`, `magenta #C48AC9`, `brown #A67C64`
-- Bright variants are 20%+ toward white and visibly distinct.
+- `cyan #6EC2C4`, `blue #7AA5D6`, `magenta #C48AC9`, `brown #96604A`
+- Bright variants are lightened toward white and visibly distinct
+  (≥ 1.27:1 against their base color).
 
-Contrast (measured): foreground/background **16.5:1**, secondary **8.2:1**,
-accent/background **4.8:1**, selection pairing **14.5:1**.
+Contrast (measured, WCAG 2.x, same numbers as `omarchy dev theme-preview`):
+foreground/background **16.5:1**, secondary **8.2:1**, accent/background
+**4.8:1**, selection/foreground **11.6:1**.
 
 Window borders use a red gradient:
 
@@ -59,7 +63,7 @@ programmatically with ImageMagick; no third-party imagery.
 
 ## Compatibility
 
-- Omarchy **4.x** (tested on `4.0.4-1` and `4.0.5-1`). Requires the
+- Omarchy **4.x** (tested on `4.0.4-1`, `4.0.5-1` and `4.0.6-1`). Requires the
   `colors.toml` theme system with `mode`, template expansion and
   `hypr_gradient` support.
 - Everything is derived from `colors.toml` through Omarchy's built-in
@@ -139,6 +143,7 @@ omarchy-lula-theme/
 ├── preview-unlock.png   # 1920×1080 lock preview (Style > Unlock)
 ├── scripts/             # make-preview.sh, generates preview.png
 ├── README.md
+├── PROMPT.md            # the theme-creation prompt, for reuse
 ├── RESEARCH.md          # how Omarchy theming was verified
 ├── LICENSE
 └── .gitignore

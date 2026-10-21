@@ -1,7 +1,7 @@
 # Lula — Omarchy Theme Research
 
-**Date:** 2026-10-17 (latest audit)
-**Omarchy version tested:** 4.0.4-1 (2026-10-16), re-audited on **4.0.5-1** (2026-10-17); `version` file reports `4.0.0.alpha`
+**Date:** 2026-10-21 (latest audit)
+**Omarchy version tested:** 4.0.4-1 (2026-10-16), re-audited on 4.0.5-1 (2026-10-17) and on **4.0.6-1** (2026-10-21); `version` file reports `4.0.0.alpha`
 **Machine:** Arch Linux, current theme at first research time: `Ankh Dark`
 
 This document records how the Omarchy theme system actually works on the
@@ -51,7 +51,7 @@ not from memory or old tutorials.
      merging)
    - `/usr/share/omarchy/bin/omarchy-theme-color` (canonical parser, alias
      cascade, derivations, mode resolution — shared by all consumers)
-   - `/usr/share/omarchy/default/themed/*.tpl` (20 templates)
+   - `/usr/share/omarchy/default/themed/*.tpl` (19 templates on 4.0.6-1)
    - `/usr/share/omarchy/themes/*/colors.toml`, `icons.theme`, `vscode.json`,
      `neovim.lua`, `keyboard.rgb`, `shell.lock.toml`
    - `~/.config/omarchy/themes/ankh-dark/` (user theme example with
@@ -109,10 +109,10 @@ the installed package cites `https://github.com/basecamp/omarchy`.
 
 ## 2. Installed version and supported features
 
-- Package `omarchy 4.0.4-1`, shell = Quickshell (`omarchy-shell`),
-  compositor Hyprland, 20 built-in templates (see §4), `gum` menus,
-  Plymouth/SDDM integration (`omarchy plymouth preview/set`, `unlock.png`),
-  RGB keyboard hook, GNOME key, VS Code extension auto-install,
+- Package `omarchy 4.0.6-1` (first audited on 4.0.4-1), shell = Quickshell
+  (`omarchy-shell`), compositor Hyprland, 19 built-in templates (see §4),
+  `gum` menus, Plymouth/SDDM integration (`omarchy plymouth preview/set`,
+  `unlock.png`), RGB keyboard hook, GNOME key, VS Code extension auto-install,
   Chromium/Obsidian/Claude/Pi/Hermes/T3Code/Zed theming hooks.
 - `omarchy dev theme-preview [name|dir|colors.toml]` renders ramp,
   contrast (`foreground/background`), selection sample, ANSI strips.
@@ -365,3 +365,52 @@ mechanism documented above is still current. Differences observed 4.0.4 → 4.0.
   identical to snapshot; zero `{{ }}` leftovers in staged configs;
   `omarchy theme list` shows "Lula"; switcher preview resolves via
   `preview.png`.
+
+## 12. Post-update audit on Omarchy 4.0.6-1 (2026-10-21)
+
+Re-audit after the system update. The mechanism documented above is still
+current — the staging flow, the deny list, the resolver cascade and the
+`hypr_gradient` / `shell_gradient` expansion are byte-for-byte the same
+behaviour as on 4.0.5. What this audit added:
+
+- **Template count is 19, not 20.** `/usr/share/omarchy/default/themed/` on
+  4.0.6-1 holds exactly 19 `*.tpl`: `alacritty, btop, chromium, claude,
+  foot, ghostty, gum_env, helix, hermes, hyprland,
+  hyprland-preview-share-picker, keyboard.rgb, kitty, neovim, obsidian, pi,
+  shell, t3code, vscode-theme`. The `fcitx5-theme.conf.tpl` template named in
+  the upstream docs does **not** exist in this package (there is no
+  `omarchy-theme-set-fcitx5` binary either), so it was never part of the
+  20 counted before — §2 and the source list now say 19.
+- **A symlinked theme is treated as user-written and staged in full.**
+  `omarchy-theme-set` decides with
+  `theme_came_from_a_repo() { [[ ! -L $source && -d $source/.git ]]; }` — a
+  symlink short-circuits the filter, so a theme directory that is a symlink
+  to a working copy stages `.lua`, terminal configs and `vscode.json` like a
+  hand-written theme. This is the supported way to develop a theme locally
+  against `~/.config/omarchy/themes/<slug>`.
+  Trade-off: `omarchy-theme-extras` skips symlinks, so `omarchy theme update`
+  no longer `git pull`s them — pull the working copy by hand instead.
+- **`omarchy-theme-set` serializes on a `flock`** and releases the lock
+  before the slow app-retint group, so two concurrent `omarchy theme set`
+  calls queue instead of racing over the shared `next-theme` staging
+  directory. `OMARCHY_THEME_WAIT=1` makes the command wait for every retint
+  (needed under systemd, where the oneshot unit's cgroup would otherwise
+  kill the background group).
+- **`omarchy dev theme-preview` gained a "Neutral ramp" section** listing
+  the resolved surfaces and foregrounds ordered by luminance. It is the
+  cheapest way to see a ramp inversion: on this audit Lula printed
+  `light_foreground` *above* `bright_foreground`, i.e. the cursor / ANSI 15
+  color was not the top of the neutral ramp. Fixed by swapping the two
+  values (`light_foreground #F5E9EC`, `bright_foreground #FBEFF3`); the
+  official tool now prints a strictly monotonic ramp.
+- **`omarchy-restart-opencode` is in the post-theme retint list**, so an
+  OpenCode session picks up the new palette on a theme switch.
+- **e2e re-verification on 4.0.6**: staged tree from `omarchy theme set lula`
+  contains zero `{{ }}` leftovers in any generated config; every generated
+  JSON (`vscode-theme`, `claude`, `pi`, `t3code`, `spotifast`, `zapfast`)
+  parses; `hyprland.lua` renders the border as
+  `{ colors = { "rgba(E63950ee)", "rgba(761C30ee)" }, angle = 45 }` and
+  `shell.toml [hyprland]` as
+  `rgba(E63950ee) rgba(761C30ee) 45deg`; background cycling picks the
+  theme's own `backgrounds/` and leaves the symlink pointing inside
+  `~/.local/state/omarchy/current/theme/backgrounds/`.

@@ -15,8 +15,8 @@ lighter_background = "#21171C"
 
 foreground = "#F2E8EB"
 dark_foreground = "#B7A2A9"
-light_foreground = "#FBEFF3"
-bright_foreground = "#F5E9EC"
+light_foreground = "#F5E9EC"
+bright_foreground = "#FBEFF3"
 
 red = "#E63950"
 yellow = "#D9A45B"
