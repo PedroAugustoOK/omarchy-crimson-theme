@@ -134,9 +134,10 @@ omarchy-crimson-theme/
 ├── backgrounds/         # 3 abstract wallpapers
 ├── icons.theme          # Yaru-red
 ├── keyboard.rgb         # e63950
-├── preview.png          # 1800×1012 theme-picker thumbnail
+├── preview.png          # 1800×1012 theme-picker artwork
 ├── unlock.png           # transparent lock-screen art
 ├── preview-unlock.png   # 1920×1080 lock preview (Style > Unlock)
+├── scripts/             # make-preview.sh, generates preview.png
 ├── README.md
 ├── RESEARCH.md          # how Omarchy theming was verified
 ├── LICENSE
