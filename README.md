@@ -1,14 +1,14 @@
-# Crimson for Omarchy
+# Lula for Omarchy
 
-A dark-red Omarchy theme. Near-black wine-tinted surfaces, a crimson accent
+A dark-red Omarchy theme. Near-black wine-tinted surfaces, a red accent
 used where it matters — focused borders, active bar elements, selections —
 and warm, highly legible text.
 
-Its light sibling, **Crimson Light** (warm paper, deep wine ink, the same
-crimson family), lives at
-[PedroAugustoOK/omarchy-crimson-light-theme](https://github.com/PedroAugustoOK/omarchy-crimson-light-theme).
+Its light sibling, **Lula Light** (warm paper, deep wine ink, the same
+red family), lives at
+[PedroAugustoOK/omarchy-lula-light-theme](https://github.com/PedroAugustoOK/omarchy-lula-light-theme).
 
-![Crimson preview](preview.png)
+![Lula preview](preview.png)
 
 ## Palette
 
@@ -17,8 +17,8 @@ crimson family), lives at
 | Primary background | Near black | `#0B0A0C` |
 | Recessed | Black | `#080708` / `#050404` |
 | Raised surface | Dark wine | `#21171C` |
-| Accent / Red | Crimson | `#E63950` |
-| Intense red | Bright crimson | `#FF5C74` |
+| Accent / Red | Wine red | `#E63950` |
+| Intense red | Bright red | `#FF5C74` |
 | Deep wine | Wine | `#761C30` (borders) |
 | Selection | Dark wine | `#4A1E2A` |
 | Primary text | Warm white | `#F2E8EB` |
@@ -34,7 +34,7 @@ Full ANSI set (all ≥ 4.5:1 vs background except brown, which is decorative):
 Contrast (measured): foreground/background **16.5:1**, secondary **8.2:1**,
 accent/background **4.8:1**, selection pairing **14.5:1**.
 
-Window borders use a crimson gradient:
+Window borders use a red gradient:
 
 ```toml
 hyprland_active_border = "rgba(E63950ee) rgba(761C30ee) 45deg"
@@ -50,9 +50,9 @@ imagery, just slow washes of wine and near-black.
 
 | Wallpaper | Description |
 |---|---|
-| ![01 Crimson Ember](backgrounds/001-crimson-ember.png) `001-crimson-ember.png` | A diagonal ember glow dissolving into near-black |
-| ![02 Crimson Velvet](backgrounds/002-crimson-velvet.png) `002-crimson-velvet.png` | A soft central bloom of deep wine, barely lit |
-| ![03 Crimson Dusk](backgrounds/003-crimson-dusk.png) `003-crimson-dusk.png` | Warm ember light low at the foot of the frame |
+| ![01 Lula Ember](backgrounds/001-lula-ember.png) `001-lula-ember.png` | A diagonal ember glow dissolving into near-black |
+| ![02 Lula Velvet](backgrounds/002-lula-velvet.png) `002-lula-velvet.png` | A soft central bloom of deep wine, barely lit |
+| ![03 Lula Dusk](backgrounds/003-lula-dusk.png) `003-lula-dusk.png` | Warm ember light low at the foot of the frame |
 
 PNG, 145–180 KB each. Original abstract artwork generated
 programmatically with ImageMagick; no third-party imagery.
@@ -69,30 +69,30 @@ programmatically with ImageMagick; no third-party imagery.
 - The repo ships **no** `.lua`, terminal configs or `vscode.json`, since
   those are dropped for git-installed themes and regenerated locally.
   The theme looks correct from `colors.toml` alone.
-- Icons: `Yaru-red`. Keyboard backlight: crimson `e63950`.
+- Icons: `Yaru-red`. Keyboard backlight: red `e63950`.
 
 ## Installation
 
 ```bash
-omarchy theme install https://github.com/PedroAugustoOK/omarchy-crimson-theme.git
+omarchy theme install https://github.com/PedroAugustoOK/omarchy-lula-theme.git
 ```
 
-This clones to `~/.config/omarchy/themes/crimson` and applies it immediately.
+This clones to `~/.config/omarchy/themes/lula` and applies it immediately.
 (Menu path: `Install > Style > Theme`.)
 
 ## Activation
 
 ```bash
-omarchy theme list       # confirm `crimson` is listed
-omarchy theme set crimson
-omarchy theme current    # should print `Crimson`
+omarchy theme list       # confirm `lula` is listed
+omarchy theme set lula
+omarchy theme current    # should print `Lula`
 omarchy theme bg next    # cycle the three wallpapers
 ```
 
 Preview the palette without applying:
 
 ```bash
-omarchy dev theme-preview crimson
+omarchy dev theme-preview lula
 ```
 
 ## Update and removal
@@ -100,7 +100,7 @@ omarchy dev theme-preview crimson
 ```bash
 omarchy theme update          # pull latest for all git-installed themes
 omarchy theme refresh         # re-apply the current theme after an Omarchy upgrade
-omarchy theme remove crimson  # delete the local clone
+omarchy theme remove lula      # delete the local clone
 ```
 
 After `omarchy update` brings new Omarchy versions, run
@@ -112,24 +112,24 @@ To restore your previous theme: `omarchy theme set "<name>"`
 
 ## Optional extras (machine-local, not part of the theme)
 
-- **Plymouth boot screen** — apply Crimson to the boot/login screen:
+- **Plymouth boot screen** — apply Lula to the boot/login screen:
 
   ```bash
-  omarchy-plymouth-set-by-theme crimson   # uses unlock.png + palette (asks for sudo)
-  omarchy plymouth preview '#0B0A0C' '#F2E8EB' ~/.config/omarchy/themes/crimson/unlock.png /tmp/crimson-boot.png
+  omarchy-plymouth-set-by-theme lula   # uses unlock.png + palette (asks for sudo)
+  omarchy plymouth preview '#0B0A0C' '#F2E8EB' ~/.config/omarchy/themes/lula/unlock.png /tmp/lula-boot.png
   ```
 
   The preview command leaves an `imv` window open showing the render — close
   it to finish. Reset with `omarchy plymouth reset` or pick another theme's
   boot screen under `Style > Unlock`.
 - **OWE wallpaper engine** (`omarchy pkg add owe`) can play animated
-  backgrounds/intros from themes. Crimson ships static wallpapers only;
+  backgrounds/intros from themes. Lula ships static wallpapers only;
   see `RESEARCH.md §11` for the intro-vs-OWE status.
 
 ## Repository structure
 
 ```text
-omarchy-crimson-theme/
+omarchy-lula-theme/
 ├── colors.toml          # the palette — the only required file
 ├── backgrounds/         # 3 abstract wallpapers
 ├── icons.theme          # Yaru-red

@@ -1,6 +1,6 @@
 # PROMPT — Criar um tema completo para Omarchy
 
-> Prompt reescrito (2026-10-19) a partir do primeiro prompt do projeto Crimson,
+> Prompt reescrito (2026-10-19) a partir do primeiro prompt do projeto Lula,
 > com tudo que foi aprendido ao construir, auditar e publicar o tema dark.
 > Padrões verificados no sistema em: RESEARCH.md (fonte da verdade,
 > incluindo §11 pós-4.0.5). Última versão testada do Omarchy: **4.0.5-1**.
@@ -32,9 +32,9 @@ scripts instalados vencem qualquer documentação da internet.
 
 - Repositório: `omarchy-<nome>-theme` (minúsculas, `[a-z0-9._-]`).
   O slug instalado sai da URL ao remover `omarchy-…`/`…-theme`
-  (ex.: `omarchy-crimson-light-theme` → tema `crimson-light`).
+  (ex.: `omarchy-lula-light-theme` → tema `lula-light`).
 - Um tema por repositório; variantes (dark/light) são temas-irmãos em
-  repositórios separados, com nomes `Crimson` / `Crimson Light`.
+  repositórios separados, com nomes `Lula` / `Lula Light`.
 - Conta/repo no GitHub; branch `main`; tags de versão (`v1.0`…) com release
   notes.
 
@@ -90,7 +90,7 @@ não geram aviso (docs).
 - Metas de contraste: fg/bg 7:1 (piso 4,5:1); texto secundário ≥4,5:1;
   accent/bg ≥3:1 (em light use accent ~15–20% mais escuro que o dark-irmão);
   ANSI/bg ≥4,5:1 tanto quanto oficialmente possível; pares selection ≥4,5:1.
-- Uma cor de destaque: `accent == red` (padrão do projeto Crimson).
+- Uma cor de destaque: `accent == red` (padrão do projeto Lula).
 - NÃO redefinir chaves derivadas: `bg/fg` e `color0–15` saem da resolução
   (`omarchy-theme-color --all` resolve 71 chaves; `purple` aliasia
   `magenta`; `mode`/`theme_type` derivados). Valide com

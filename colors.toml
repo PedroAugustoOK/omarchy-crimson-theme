@@ -1,5 +1,5 @@
-# Crimson — a dark-red Omarchy theme.
-# Near-black wine-tinted surfaces, crimson accent, warm readable text.
+# Lula — a dark-red Omarchy theme.
+# Near-black wine-tinted surfaces, red accent, warm readable text.
 # All 26 canonical keys are explicit (no reliance on derived floors).
 
 mode = "dark"
@@ -34,6 +34,6 @@ bright_cyan = "#8EDDDD"
 bright_blue = "#9ABFE8"
 bright_magenta = "#D8A9DC"
 
-# Crimson gradient window borders, dark-wine inactive borders.
+# Red gradient window borders, dark-wine inactive borders.
 hyprland_active_border = "rgba(E63950ee) rgba(761C30ee) 45deg"
 hyprland_inactive_border = "rgba(4a1e2aaa)"

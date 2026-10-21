@@ -1,4 +1,4 @@
-# Crimson — Omarchy Theme Research
+# Lula — Omarchy Theme Research
 
 **Date:** 2026-10-17 (latest audit)
 **Omarchy version tested:** 4.0.4-1 (2026-10-16), re-audited on **4.0.5-1** (2026-10-17); `version` file reports `4.0.0.alpha`
@@ -176,7 +176,7 @@ Consumed via `{{ hypr_gradient hyprland_active_border accent }}` and
 `accent`. Seen in `hackerman`, `last-horizon`, `solitude`, `lumon`.
 `active_border_color` / `active_tab_background` appear in some stock themes
 but no current template reads them (kitty template hardcodes `accent`) —
-omitted from Crimson as dead keys.
+omitted from Lula as dead keys.
 
 **Mode resolution order:** `mode` → legacy `theme_type` → `light.mode` file
 → background luminance (ΣRGB > 382 = light) → dark. Always set `mode`.
@@ -217,7 +217,7 @@ one `[section]` after generation; full `shell.toml` replaces everything.
 `alacritty.toml.tpl.sample` in `~/.config/omarchy/themed/` documents all
 variables.
 
-**Rule applied to Crimson:** ship no generated-equivalent files; rely on
+**Rule applied to Lula:** ship no generated-equivalent files; rely on
 `colors.toml` so every app stays in sync. Only `colors.toml`,
 `backgrounds/`, `icons.theme`, `keyboard.rgb`, `preview.png`,
 `unlock.png` + `preview-unlock.png`, docs.
@@ -256,12 +256,12 @@ variables.
 | Notifications | shell `[notifications]` + `omarchy-notification-send` |
 | Lock screen | shell `[lock]` + `unlock.png`/`preview-unlock.png` → `Style > Unlock`; Plymouth via `omarchy plymouth preview/set` |
 | Terminals (Alacritty/Foot/Ghostty/Kitty) | generated configs from 16 ANSI + cursor/selection; live-restarted on set |
-| Neovim | generated `neovim.lua` (aether.nvim palette = full `colors.toml`); stock themes additionally ship a hand `neovim.lua` pinning e.g. `tokyonight.nvim` — dropped on clone, so Crimson relies on aether |
+| Neovim | generated `neovim.lua` (aether.nvim palette = full `colors.toml`); stock themes additionally ship a hand `neovim.lua` pinning e.g. `tokyonight.nvim` — dropped on clone, so Lula relies on aether |
 | VS Code | generated `vscode-theme.json` (Omarchy theme); stock `vscode.json` (extension pointer) dropped on clone |
 | Chromium | `chromium.theme` = `background_rgb` + hooks `theme-set-browser*` |
 | btop | `btop.theme` generated (proc/cpu/mem/net boxes map to accent/magenta/green/red…); restarted on set |
 | Helix / Obsidian / Claude / Pi / Hermes / T3Code / Zed / tmux / GNOME / Emacs | generated `helix.toml` etc. + `theme-set-*` hooks |
-| Icons | `icons.theme` single line, Yaru family (`Yaru`, `Yaru-blue`, `Yaru-dark`, `Yaru-magenta`, `Yaru-olive`, `Yaru-prussiangreen`, `Yaru-purple`, `Yaru-red`, `Yaru-sage`, `Yaru-wartybrown`, `Yaru-yellow`); Crimson → `Yaru-red` (as `matte-black` does) |
+| Icons | `icons.theme` single line, Yaru family (`Yaru`, `Yaru-blue`, `Yaru-dark`, `Yaru-magenta`, `Yaru-olive`, `Yaru-prussiangreen`, `Yaru-purple`, `Yaru-red`, `Yaru-sage`, `Yaru-wartybrown`, `Yaru-yellow`); Lula → `Yaru-red` (as `matte-black` does) |
 | Keyboard RGB | `keyboard.rgb` six hex, no `#` (e.g. `e63950`); generated from `{{ accent_strip }}`-equivalent if absent |
 | Screensaver/branding | `omarchy branding screensaver/about`, not per-theme |
 
@@ -277,8 +277,8 @@ variables.
 
 ## 8. Installing from a Git repo
 
-`omarchy theme install https://github.com/USER/omarchy-crimson-theme.git`
-(validated URL, slug `crimson`, clone, apply). Pre-publish: README +
+`omarchy theme install https://github.com/USER/omarchy-lula-theme.git`
+(validated URL, slug `lula`, clone, apply). Pre-publish: README +
 screenshot + credits, LICENSE, `preview.png`, no Lua/terminal/vscode.json
 dependence, **real install test from URL on a clean machine**.
 
@@ -311,7 +311,7 @@ bright_* visibly brighter; light themes darken ANSI + avoid pure white.
 
 ## 11. Post-update audit on Omarchy 4.0.5-1 (2026-10-17)
 
-Re-audit after the system update. All Crimson checks pass unchanged; the
+Re-audit after the system update. All Lula checks pass unchanged; the
 mechanism documented above is still current. Differences observed 4.0.4 → 4.0.5:
 
 - **New hard dependency `omarchy-themes-intros`** ("Background intro videos
@@ -336,7 +336,7 @@ mechanism documented above is still current. Differences observed 4.0.4 → 4.0.
   + symlinks + optional `colors.toml` derived from `alacritty.toml`). Docs
   (`*.md`, `LICENSE`) are staged but exempt from "ignored" reporting.
   Theme slug is written to `~/.local/state/omarchy/current/theme.name`
-  (lowercase); `omarchy theme current` prettifies it ("Crimson").
+  (lowercase); `omarchy theme current` prettifies it ("Lula").
 - **New theme set hooks** beyond the known ones: `omarchy-theme-set-tmux`,
   `-gnome`, `-pi`, `-claude`, `-hermes`, `-t3code`, `-obsidian` — all
   generated from `colors.toml` resolutions; a colors.toml theme contributes
@@ -359,9 +359,9 @@ mechanism documented above is still current. Differences observed 4.0.4 → 4.0.
   blocks until the window closes. File is written before `imv`; no upstream
   bug report needed. Run with a short timeout or close the viewer.
 - **e2e re-verification on 4.0.5**: `omarchy theme install
-  https://github.com/PedroAugustoOK/omarchy-crimson-theme` → EXIT 0, clone
-  under `~/.config/omarchy/themes/crimson`, no "Ignored in …" warnings;
-  `omarchy theme set crimson` (skip-background) → EXIT 0; staged tree
+  https://github.com/PedroAugustoOK/omarchy-lula-theme` → EXIT 0, clone
+  under `~/.config/omarchy/themes/lula`, no "Ignored in …" warnings;
+  `omarchy theme set lula` (skip-background) → EXIT 0; staged tree
   identical to snapshot; zero `{{ }}` leftovers in staged configs;
-  `omarchy theme list` shows "Crimson"; switcher preview resolves via
+  `omarchy theme list` shows "Lula"; switcher preview resolves via
   `preview.png`.
